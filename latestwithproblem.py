@@ -25,7 +25,6 @@ def DivideColumns (data,colindex):
     divided3Darray = np.array([short,middle,long])
     return divided3Darray;
 data = DivideColumns(iris_array,0)
-data
 
 
 def Numberofoccurences(data,sortcolindex,g_index):
@@ -44,3 +43,23 @@ def Numberofoccurences(data,sortcolindex,g_index):
     array1D_for_occ = np.array([num_Iris_virginica,num_Iris_versicolor,num_Iris_setosa])
     return array1D_for_occ ;
 
+
+short = np.array([Numberofoccurences(iris_array,0,0),Numberofoccurences(iris_array,1,0),Numberofoccurences(iris_array,2,0), Numberofoccurences(iris_array,3,0)])
+middle = np.array([Numberofoccurences(iris_array,0,1),Numberofoccurences(iris_array,1,1),Numberofoccurences(iris_array,2,1), Numberofoccurences(iris_array,3,1)])  
+long = np.array([Numberofoccurences(iris_array,0,2),Numberofoccurences(iris_array,1,2),Numberofoccurences(iris_array,2,2), Numberofoccurences(iris_array,3,2)])
+big_data = np.array([short,middle,long])
+
+
+def find_entrophy(data,index):
+    entrophy = 0
+    for i in range(2):
+        for j in range(3):
+            entrophy-= data[index,i,j]/50 * math.log2(data[index,i,j]/50)
+    return entrophy;
+        
+    
+short_entrop = find_entrophy(big_data,0)    
+middle_entrop = find_entrophy(big_data,1)
+#long = find_entrophy(preparationforEntrophy(),2)
+
+    
